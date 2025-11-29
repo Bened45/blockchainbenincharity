@@ -8,7 +8,7 @@ export default config({
             }
             : {
                 kind: 'github',
-                repo: (process.env.NEXT_PUBLIC_GITHUB_REPO as `${string}/${string}`) || 'bened45/blockchain-benin-charity',
+                repo: (process.env.NEXT_PUBLIC_GITHUB_REPO as `${string}/${string}`) || 'bened45/blockchainbenincharity-website',
             },
     ui: {
         brand: {
