@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { partners } from '@/data/partners';
 
 export default function Partners() {
@@ -33,8 +34,13 @@ export default function Partners() {
                                 className="flex-shrink-0 mx-8 flex items-center justify-center"
                                 style={{ width: '180px', height: '80px' }}
                             >
-                                <div className="text-2xl font-bold text-slate-400 hover:text-slate-600 transition-colors duration-200">
-                                    {partner.logo}
+                                <div className="relative w-full h-full flex items-center justify-center transition-all duration-300 opacity-90 hover:opacity-100 hover:scale-105">
+                                    <Image
+                                        src={partner.logo}
+                                        alt={partner.name}
+                                        fill
+                                        className="object-contain p-4"
+                                    />
                                 </div>
                             </div>
                         ))}
@@ -45,8 +51,13 @@ export default function Partners() {
                                 className="flex-shrink-0 mx-8 flex items-center justify-center"
                                 style={{ width: '180px', height: '80px' }}
                             >
-                                <div className="text-2xl font-bold text-slate-400 hover:text-slate-600 transition-colors duration-200">
-                                    {partner.logo}
+                                <div className="relative w-full h-full flex items-center justify-center transition-all duration-300 opacity-90 hover:opacity-100 hover:scale-105">
+                                    <Image
+                                        src={partner.logo}
+                                        alt={partner.name}
+                                        fill
+                                        className="object-contain p-4"
+                                    />
                                 </div>
                             </div>
                         ))}

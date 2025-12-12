@@ -4,10 +4,8 @@ export interface Partner {
 }
 
 export const partners: Partner[] = [
-    { name: 'LogoIpsum 1', logo: 'LOGOIPSUM' },
-    { name: 'LogoIpsum 2', logo: 'LOGO' },
-    { name: 'LogoIpsum 3', logo: 'IPSUM' },
-    { name: 'LogoIpsum 4', logo: 'LOGOIPSUM' },
-    { name: 'LogoIpsum 5', logo: 'LOGO' },
-    { name: 'LogoIpsum 6', logo: 'IPSUM' },
+    { name: 'Hope with Bitcoin', logo: '/partners/hope-with-bitcoin.jpg' },
+    { name: 'Lurnix', logo: '/partners/lurnix.jpg' },
+    { name: 'Africhain', logo: '/partners/africhain.png' },
+    { name: 'JCI Abomey-Calavi Sica', logo: '/partners/jci-abomey-calavi.png' },
 ];

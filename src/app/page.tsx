@@ -3,7 +3,7 @@ import Hero, { HeroStat } from "@/components/Hero";
 import Mission from "@/components/Mission";
 import Projects, { Project } from "@/components/Projects";
 import Impact from "@/components/Impact";
-import Events from "@/components/Events";
+import Events, { CompletedProject } from "@/components/Events";
 import Testimonials from "@/components/Testimonials";
 import Partners from "@/components/Partners";
 import Footer from "@/components/Footer";
@@ -106,6 +106,19 @@ export default async function Home() {
     { label: "Projets actifs", value: cmsProjects.filter(p => p.entry.status === 'Actif' || p.entry.status === 'Urgent').length },
   ];
 
+  // Préparer les 3 derniers projets terminés pour la section Events
+  const completedProjects: CompletedProject[] = cmsProjects
+    .filter(p => p.entry.status === 'Terminé')
+    .slice(0, 3)
+    .map(p => ({
+      id: p.slug,
+      title: p.entry.title,
+      description: p.entry.description,
+      category: p.entry.category,
+      location: p.entry.location,
+      image: p.entry.image || '/project-default.jpg',
+    }));
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -116,7 +129,7 @@ export default async function Home() {
         <Projects projects={projects} />
         <AboutCTA />
         <Partners />
-        <Events />
+        <Events completedProjects={completedProjects} />
         <Testimonials testimonials={testimonials} />
         {/* <DonationCTA /> */}
         {/* <FAQ /> */}
