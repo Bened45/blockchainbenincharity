@@ -206,26 +206,55 @@ export default config({
             slugField: 'title',
             path: 'src/content/gallery/*',
             schema: {
-                title: fields.slug({ name: { label: 'Titre de la photo' } }),
-                image: fields.image({
-                    label: 'Photo',
+                title: fields.slug({ name: { label: 'Titre de l\'album' } }),
+                coverImage: fields.image({
+                    label: 'Image de couverture',
                     directory: 'public/images/gallery',
                     publicPath: '/images/gallery/',
                 }),
                 category: fields.select({
                     label: 'Catégorie',
                     options: [
-                        { label: 'Éducation', value: 'education' },
-                        { label: 'Santé', value: 'sante' },
-                        { label: 'Événements', value: 'evenements' },
-                        { label: 'Projets', value: 'projets' },
-                        { label: 'Équipe', value: 'equipe' },
+                        { label: 'Événement', value: 'Événement' },
+                        { label: 'Aide d\'urgence', value: 'Aide d\'urgence' },
+                        { label: 'Santé', value: 'Santé' },
+                        { label: 'Éducation', value: 'Éducation' },
+                        { label: 'Formation', value: 'Formation' },
                     ],
-                    defaultValue: 'evenements',
+                    defaultValue: 'Événement',
                 }),
                 description: fields.text({ label: 'Description', multiline: true }),
-                date: fields.date({ label: 'Date de la photo' }),
+                date: fields.date({ label: 'Date de l\'événement' }),
                 location: fields.text({ label: 'Lieu' }),
+                beneficiaries: fields.integer({ label: 'Nombre de bénéficiaires', validation: { min: 0 }, defaultValue: 0 }),
+                folderPath: fields.text({
+                    label: 'Nom du dossier (Vrac)',
+                    description: 'Nom du dossier dans public/images/gallery/content/ pour charger toutes les photos d\'un coup.'
+                }),
+                images: fields.array(
+                    fields.object({
+                        image: fields.image({
+                            label: 'Photo',
+                            directory: 'public/images/gallery/photos',
+                            publicPath: '/images/gallery/photos/',
+                        }),
+                        caption: fields.text({ label: 'Légende' }),
+                    }),
+                    {
+                        label: 'Photos spécifiques (avec légendes)',
+                        itemLabel: (props) => props.fields.caption.value || 'Photo',
+                    }
+                ),
+                videos: fields.array(
+                    fields.object({
+                        url: fields.url({ label: 'URL de la vidéo (YouTube/Vimeo)' }),
+                        title: fields.text({ label: 'Titre de la vidéo' }),
+                    }),
+                    {
+                        label: 'Vidéos de l\'album',
+                        itemLabel: (props) => props.fields.title.value || 'Vidéo',
+                    }
+                ),
                 photographer: fields.text({ label: 'Photographe (optionnel)' }),
             },
         }),

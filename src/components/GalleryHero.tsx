@@ -1,13 +1,16 @@
-import Image from 'next/image';
+interface GalleryHeroProps {
+    eventCount: number;
+    photoCount: number;
+    videoCount: number;
+}
 
-export default function GalleryHero() {
+export default function GalleryHero({ eventCount, photoCount, videoCount }: GalleryHeroProps) {
     return (
         <section className="relative py-24 bg-green-600 overflow-hidden">
             {/* Background Image with Overlay */}
             <div className="absolute inset-0">
                 <div className="absolute inset-0 bg-green-600/90 z-10" />
-                {/* Placeholder for background image */}
-                <div className="w-full h-full bg-[url('/gallery/hero-bg.jpg')] bg-cover bg-center opacity-50" />
+                <div className="w-full h-full bg-[url('/hero-bg.jpg')] bg-cover bg-center opacity-50" />
             </div>
 
             <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -32,13 +35,13 @@ export default function GalleryHero() {
                 {/* Stats Badges */}
                 <div className="flex flex-wrap justify-center gap-4">
                     <div className="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-semibold">
-                        6 Événements
+                        {eventCount} Événements
                     </div>
                     <div className="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-semibold">
-                        33 Photos
+                        {photoCount} Photos
                     </div>
                     <div className="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-semibold">
-                        15 Vidéos
+                        {videoCount} Vidéos
                     </div>
                 </div>
             </div>
