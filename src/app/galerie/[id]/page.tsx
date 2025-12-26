@@ -8,6 +8,7 @@ import fs from "fs";
 import path from "path";
 
 export const dynamic = 'force-static';
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
     const albums = await reader.collections.gallery.list();
