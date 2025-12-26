@@ -206,7 +206,7 @@ export default config({
             slugField: 'title',
             path: 'src/content/gallery/*',
             schema: {
-                title: fields.slug({ name: { label: 'Titre de l\'album' } }),
+                title: fields.text({ label: 'Titre de l\'album' }),
                 coverImage: fields.image({
                     label: 'Image de couverture',
                     directory: 'public/images/gallery',

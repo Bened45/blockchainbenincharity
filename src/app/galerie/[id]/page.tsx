@@ -7,6 +7,15 @@ import Link from "next/link";
 import fs from "fs";
 import path from "path";
 
+export const dynamic = 'force-static';
+
+export async function generateStaticParams() {
+    const albums = await reader.collections.gallery.list();
+    return albums.map((id) => ({
+        id,
+    }));
+}
+
 export default async function GalleryDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
     const album = await reader.collections.gallery.read(id);
@@ -99,7 +108,7 @@ export default async function GalleryDetailPage({ params }: { params: Promise<{ 
                                 <div key={index} className="group relative aspect-[4/3] bg-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
                                     <Image
                                         src={img.url || ""}
-                                        alt={img.caption || album.title}
+                                        alt={(img.caption || album.title) || ""}
                                         fill
                                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
