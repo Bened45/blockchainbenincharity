@@ -23,7 +23,7 @@ export default async function GalleryGrid() {
 
         return {
             id: item.slug,
-            title: item.entry.title,
+            title: item.entry.title || 'Sans titre',
             category: item.entry.category,
             description: item.entry.description,
             date: item.entry.date ? new Date(item.entry.date).getFullYear().toString() : 'N/A',
